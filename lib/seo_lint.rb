@@ -17,6 +17,13 @@ class SeoLint
     end
 
     def has_heading?
+     ele = @page.search('h1')
+     if ele.empty?
+        puts '[TEST FAILED] : '.red + 'heading tag not found'
+      else
+          puts '[TEST PASSED] : '.green + 'heading tag found'  
+      end
+
     end
     
 end
