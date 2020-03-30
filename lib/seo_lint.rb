@@ -8,8 +8,8 @@ class SeoLint
     end
 
     def has_title?
-        ele = @page.title
-        if ele.empty?
+        ele = @page.search('title')
+        if ele.empty? || ele.text.empty?
           puts '[TEST FAILED] : '.red + 'element required in the title tag'
         else
             puts '[TEST PASSED] : '.green + 'element present in the title tag'  
@@ -27,11 +27,16 @@ class SeoLint
     end
 
     def title_length
-        if @page.title.size <= 70
-        puts '[TEST PASSED] : '.green + 'Title is not more than 70 characters'
-        else
-        puts '[TEST FAILED] : '.red + 'Title is more than 70 characters'
-        end
+        ele = @page.search('title')
+        if ele.text.empty?
+            puts '[TEST FAILED] : '.red + 'Title not found' 
+        else  
+          if @page.title.size <= 70 
+            puts '[TEST PASSED] : '.green + 'Title is not more than 70 characters'
+          else
+            puts '[TEST FAILED] : '.red + 'Title is more than 70 characters'
+          end
+       end
     end
 
     def image_attr
@@ -53,11 +58,16 @@ class SeoLint
     end
 
     def meta_attr
-      @page.xpath("//meta[@name='fitness']/@content").each do |attr|
-        if attr.value.empty?
-          puts '[TEST FAILED] : '.red + 'meta description not found'
-        else
-          puts '[TEST PASSED] : '.green + 'meta description found'  
+      meta = @page.search('meta[@name]')
+      if meta.empty?
+        puts '[TEST FAILED] : '.red + 'meta tag not found'
+      else
+        @page.xpath("//meta[@name]/@content").all? do |attr|
+          if attr.value.empty?
+            puts '[TEST FAILED] : '.red + 'meta description not found'
+          else
+            puts '[TEST PASSED] : '.green + 'meta description found'  
+          end
         end
       end
     end
