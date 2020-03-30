@@ -18,7 +18,7 @@ class SeoLint
 
     def has_heading?
      ele = @page.search('h1')
-     if ele.empty?
+     if ele.empty? || ele.text.empty?
         puts '[TEST FAILED] : '.red + 'heading tag not found'
       else
           puts '[TEST PASSED] : '.green + 'heading tag found'  
@@ -35,8 +35,8 @@ class SeoLint
     end
 
     def image_attr
-       img_atr = @page.xpath("//*[@alt]")
-       if img_atr.empty?
+       img_atr = @page.xpath("//img").attr('alt')
+       if img_atr.text.empty?
         puts '[TEST FAILED] : '.red + 'alt attribute not found in image tag'
       else
           puts '[TEST PASSED] : '.green + 'alt attribute found in image tag'  
@@ -44,7 +44,7 @@ class SeoLint
     end
 
     def anchor_txt
-    element = @page.at_xpath('//a[@href="#"]')
+    element = @page.at_xpath('//a[@href]')
     if element.text.empty?
         puts '[TEST FAILED] : '.red + 'anchor text not found'
       else
