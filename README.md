@@ -1,8 +1,6 @@
 # SEO_Linter
  SEO_Linter is a linter that provides feedbacks about errors if the rules of SEO html tag is not observed.
 
- ## Preview
-
  ## How it works
  The Linter is for beginners who are not familiar with the SEO Html tag rules. There are so many rules for SEO Html tag but this linter focus on the basic requirement to have a **good SEO Html tag**.
 
@@ -14,7 +12,19 @@
  - It check if the meta tag is present in the html tag.
 
  ## Examples
- Below is the example of a bad code
+ Below is an the code of a bad SEO Html tag
+ - index.html
+ ![Annotation 2020-03-30 141307](https://user-images.githubusercontent.com/52670459/77917681-c5f23d00-7292-11ea-8c25-b1b73a396815.png)
+
+- Linter ouput
+![Annotation 2020-03-30 141357](https://user-images.githubusercontent.com/52670459/77917814-eae6b000-7292-11ea-9fdc-5bc4b09a0b13.png)
+
+An Example of a good SEO Html tag
+-index.html
+![Annotation 2020-03-30 140937](https://user-images.githubusercontent.com/52670459/77918022-37ca8680-7293-11ea-9c49-4a272591a2b3.png)
+
+-Linter output
+![Annotation 2020-03-30 140809](https://user-images.githubusercontent.com/52670459/77918136-5f215380-7293-11ea-8654-8622f0bb2973.png)
 
 ## Built With
 
