@@ -44,7 +44,12 @@ class SeoLint
     end
 
     def anchor_txt
-        
+    element = @page.at_xpath('//a[@href="#"]')
+    if element.text.empty?
+        puts '[TEST FAILED] : '.red + 'anchor text not found'
+      else
+          puts '[TEST PASSED] : '.green + 'anchor text found'  
+      end
     end
     
 end
