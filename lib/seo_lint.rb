@@ -61,6 +61,15 @@ class SeoLint
         end
       end
     end
+
+    def validate
+      self.has_title?
+      self.has_heading?
+      self.title_length
+      self.image_attr
+      self.anchor_txt
+      self.meta_attr
+    end
     
 end
 
