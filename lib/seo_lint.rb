@@ -25,6 +25,14 @@ class SeoLint
       end
 
     end
+
+    def title_length
+        if @page.title.size <= 60
+        puts '[TEST PASSED] : '.green + 'Title is not more than 70 characters'
+        else
+        puts '[TEST FAILED] : '.red + 'Title is more than 70 characters'
+        end
+    end
     
 end
 
