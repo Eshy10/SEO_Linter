@@ -14,16 +14,20 @@
  ## Examples
  Below is an the code of a bad SEO Html tag
  - index.html
+
  ![Annotation 2020-03-30 141307](https://user-images.githubusercontent.com/52670459/77917681-c5f23d00-7292-11ea-8c25-b1b73a396815.png)
 
 - Linter ouput
+
 ![Annotation 2020-03-30 141357](https://user-images.githubusercontent.com/52670459/77917814-eae6b000-7292-11ea-9fdc-5bc4b09a0b13.png)
 
 An Example of a good SEO Html tag
--index.html
+- index.html
+
 ![Annotation 2020-03-30 140937](https://user-images.githubusercontent.com/52670459/77918022-37ca8680-7293-11ea-9c49-4a272591a2b3.png)
 
--Linter output
+- Linter output
+
 ![Annotation 2020-03-30 140809](https://user-images.githubusercontent.com/52670459/77918136-5f215380-7293-11ea-8654-8622f0bb2973.png)
 
 ## Built With
