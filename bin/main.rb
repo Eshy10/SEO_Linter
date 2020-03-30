@@ -6,3 +6,4 @@ seo = SeoLint.new
 seo.has_title?
 seo.has_heading?
 seo.title_length
+seo.image_attr
