@@ -38,8 +38,11 @@ class SeoLint
 
   def image_attr
     img_atr = @page.xpath('//img').attr('alt')
-    if img_atr.text.empty?
-      puts '[TEST FAILED] : '.red + 'alt attribute not found in image tag'
+    element = @page.search('//img[@alt]')
+    if element.empty?
+      puts '[TEST FAILED] : '.red + 'alt attribute tag not found in image tag'
+    elsif img_atr.text.empty?
+      puts '[TEST FAILED] : '.red + 'alt attribute not is empty'
     else
       puts '[TEST PASSED] : '.green + 'alt attribute found in image tag'
     end
