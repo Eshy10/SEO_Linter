@@ -46,7 +46,7 @@ An Example of a good SEO Html tag
 - Run this command line: bin/main.rb
 
 ## Video description of the project
-<a href="https://www.loom.com/share/0685c39ea5d04f8297c5328e757785f6">click here</a>
+<a href="https://www.loom.com/share/0685c39ea5d04f8297c5328e757785f6">click here to watch the video</a>
 
 ## Requirements
 - Ruby
