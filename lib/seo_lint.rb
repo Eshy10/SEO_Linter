@@ -51,6 +51,16 @@ class SeoLint
           puts '[TEST PASSED] : '.green + 'anchor text found'  
       end
     end
+
+    def meta_attr
+      @page.xpath("//meta[@name='fitness']/@content").each do |attr|
+        if attr.value.empty?
+          puts '[TEST FAILED] : '.red + 'meta description not found'
+        else
+          puts '[TEST PASSED] : '.green + 'meta description found'  
+        end
+      end
+    end
     
 end
 
