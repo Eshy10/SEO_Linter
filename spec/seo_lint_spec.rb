@@ -4,47 +4,47 @@ require 'nokogiri'
 RSpec.describe SeoLint do
   let(:page) { Nokogiri::HTML.parse(open('index.html')) }
   describe '#title?' do
-    it 'should return true if title is present' do
+    it 'true if title is present' do
       ele = page.title
       expect(!ele.empty?).to eq(true)
     end
 
-    it 'should return false if title is not present' do
+    it 'false if title is not present' do
       ele = page.title
       expect(!ele.empty?).not_to eq(false)
     end
   end
 
   describe '#heading?' do
-    it 'should return true if h1 tag is empty' do
+    it 'true if h1 tag is empty' do
       ele = page.search('h1')
       expect(!ele.empty?).to eq(true)
     end
 
-    it 'should return false if if h1 tag is not empty' do
+    it 'false if h1 tag is not empty' do
       ele = page.search('h1')
       expect(!ele.empty?).not_to eq(false)
     end
   end
 
   describe '#title_length' do
-    it 'should have the number of characters in title which is less than or equal to 70' do
+    it 'the number of characters in title should be less than or equal to 70' do
       ele = page.title.size <= 70
       expect(ele).to eq(true)
     end
 
-    it 'should have the number of characters in title which is not greater than 70' do
+    it 'the number of characters in title should not be greater than 70' do
       ele = page.title.size <= 70
       expect(ele).not_to eq(false)
     end
 
     context 'when the title is empty' do
-      it 'should return true if title is not empty' do
+      it 'true if title is not empty' do
         ele = page.title
         expect(!ele.empty?).to eq(true)
       end
 
-      it 'should return false if title is empty' do
+      it 'false if title is empty' do
         ele = page.title
         expect(!ele.empty?).not_to eq(false)
       end
@@ -52,14 +52,14 @@ RSpec.describe SeoLint do
   end
 
   describe '#image_attr' do
-    it 'should return true if image alt attribute is present' do
-      ele = page.xpath('//img').attr('alt')
-      expect(!ele.text.empty?).to eq(true)
+    it 'true if image alt attribute is present' do
+      ele = page.search('//img[@alt]')
+      expect(!ele.empty?).to eq(true)
     end
 
-    it 'should return false if image alt attribute is not present' do
-      ele = page.xpath('//img').attr('alt')
-      expect(!ele.text.empty?).not_to eq(false)
+    it 'false if image alt attribute is not present' do
+      ele = page.search('//img[@alt]')
+      expect(!ele.empty?).not_to eq(false)
     end
   end
 
@@ -76,22 +76,22 @@ RSpec.describe SeoLint do
   end
 
   describe '#meta_attr' do
-    it 'should return true if there is a meta tag' do
+    it 'true if there is a meta tag' do
       ele = page.search('meta[@name]')
       expect(!ele.empty?).to eq(true)
     end
 
-    it 'should return false if meta tag is not found' do
+    it 'false if meta tag is not found' do
       ele = page.search('meta[@name]')
       expect(!ele.empty?).not_to eq(false)
     end
 
     context 'when the title is empty' do
-      it 'should return true if all meta value is not empty' do
+      it 'true if all meta value is not empty' do
         expect(page.xpath('//meta[@name]/@content').all? { |attr| !attr.value.empty? }).to eq(true)
       end
 
-      it 'should return false if all meta tag value is empty' do
+      it 'false if all meta tag value is empty' do
         expect(page.xpath('//meta[@name]/@content').all? { |attr| attr.value.empty? }).to eq(false)
       end
     end

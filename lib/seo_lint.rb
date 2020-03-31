@@ -7,7 +7,7 @@ class SeoLint
     @page = Nokogiri::HTML.parse(open('index.html'))
   end
 
-private
+  private
 
   def title?
     ele = page.search('title')
