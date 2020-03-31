@@ -2,13 +2,15 @@ require 'nokogiri'
 require 'colorize'
 
 class SeoLint
-  attr_accessor :page
+  attr_reader :page
   def initialize
     @page = Nokogiri::HTML.parse(open('index.html'))
   end
 
+private
+
   def title?
-    ele = @page.search('title')
+    ele = page.search('title')
     if ele.empty? || ele.text.empty?
       puts '[TEST FAILED] : '.red + 'element required in the title tag'
     else
@@ -17,7 +19,7 @@ class SeoLint
   end
 
   def heading?
-    ele = @page.search('h1')
+    ele = page.search('h1')
     if ele.empty? || ele.text.empty?
       puts '[TEST FAILED] : '.red + 'heading tag not found'
     else
@@ -26,10 +28,10 @@ class SeoLint
   end
 
   def title_length
-    ele = @page.search('title')
+    ele = page.search('title')
     if ele.text.empty?
       puts '[TEST FAILED] : '.red + 'Title not found'
-    elsif @page.title.size <= 70
+    elsif page.title.size <= 70
       puts '[TEST PASSED] : '.green + 'Title is not more than 70 characters'
     else
       puts '[TEST FAILED] : '.red + 'Title is more than 70 characters'
@@ -37,19 +39,19 @@ class SeoLint
   end
 
   def image_attr
-    img_atr = @page.xpath('//img').attr('alt')
-    element = @page.search('//img[@alt]')
+    img_atr = page.xpath('//img').attr('alt')
+    element = page.search('//img[@alt]')
     if element.empty?
       puts '[TEST FAILED] : '.red + 'alt attribute tag not found in image tag'
     elsif img_atr.text.empty?
-      puts '[TEST FAILED] : '.red + 'alt attribute not is empty'
+      puts '[TEST FAILED] : '.red + 'alt attribute element is empty'
     else
       puts '[TEST PASSED] : '.green + 'alt attribute found in image tag'
     end
   end
 
   def anchor_txt
-    element = @page.at_xpath('//a[@href]')
+    element = page.at_xpath('//a[@href]')
     if element.text.empty?
       puts '[TEST FAILED] : '.red + 'anchor text not found'
     else
@@ -58,11 +60,11 @@ class SeoLint
   end
 
   def meta_attr
-    meta = @page.search('meta[@name]')
+    meta = page.search('meta[@name]')
     if meta.empty?
       puts '[TEST FAILED] : '.red + 'meta tag not found'
     else
-      @page.xpath('//meta[@name]/@content').all? do |attr|
+      page.xpath('//meta[@name]/@content').all? do |attr|
         if attr.value.empty?
           puts '[TEST FAILED] : '.red + 'meta description not found'
         else
@@ -71,6 +73,8 @@ class SeoLint
       end
     end
   end
+
+  public
 
   def validate
     title?
