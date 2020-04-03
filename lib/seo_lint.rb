@@ -80,4 +80,3 @@ class SeoLint
     end
   end
 end
-
