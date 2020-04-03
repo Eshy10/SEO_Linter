@@ -1,4 +1,4 @@
-require './lib/seo_lint'
+require_relative '../lib/seo_lint'
 require 'nokogiri'
 
 RSpec.describe SeoLint do

@@ -51,7 +51,7 @@ An Example of a good SEO Html tag
 ## Requirements
 - Ruby
 - Colorize
-- Nogokiri
+- Nokogiri
 
 ## Author
 

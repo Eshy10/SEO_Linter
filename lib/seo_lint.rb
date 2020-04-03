@@ -7,6 +7,15 @@ class SeoLint
     @page = Nokogiri::HTML.parse(open('index.html'))
   end
 
+  def validate
+    title?
+    heading?
+    title_length
+    image_attr
+    anchor_txt
+    meta_attr
+  end
+
   private
 
   def title?
@@ -69,16 +78,5 @@ class SeoLint
         end
       end
     end
-  end
-
-  public
-
-  def validate
-    title?
-    heading?
-    title_length
-    image_attr
-    anchor_txt
-    meta_attr
   end
 end
